@@ -19,9 +19,11 @@ function App() {
 
   // set lorem ipsum text initially
   useEffect(() => {
-    fetch('https://jaspervdj.be/lorem-markdownum/markdown.txt')
-      .then(data => data.text())
-      .then(data => setText(data));
+    function getData() {
+      fetch('https://jaspervdj.be/lorem-markdownum/markdown.txt')
+      .then(response => response.text())
+      .then(response => setText(response));
+    } getData();
   }, []);
 
   return (
