@@ -6,7 +6,9 @@ function App() {
   const [text, setText] = useState(null);
   const [isOnBottom, setIsOnBottom] = useState(false);
 
+  // change isOnBottom state accordingly scroll 
   const handleScroll = (e) => {
+    // set isOnBottom to true every time if once is scrolled to bottom
     if(isOnBottom){
       return true;
     }
@@ -15,30 +17,19 @@ function App() {
               ) < 1)
   }
 
-  useEffect(() => {
-    isOnBottom === true ? console.log('bottom') : console.log('noo');
-    console.log(isOnBottom);
-  }, [isOnBottom])
-
   // set lorem ipsum text initially
   useEffect(() => {
-    fetchLorem();
-  }, []);
-  
-  // fetch lorem ipsum
-  const fetchLorem = () => {
     fetch('https://jaspervdj.be/lorem-markdownum/markdown.txt')
       .then(data => data.text())
       .then(data => setText(data));
-  }
+  }, []);
 
   return (
     <div className="App">
-
-      <Document title="Terms and Conditions" content={text} 
+    <Document title="Terms and Conditions" content={text} 
       handleScroll={handleScroll}
       />
-      {isOnBottom && <button>I Agree</button>}
+     <button disabled={!isOnBottom ? true : false}>I Agree</button>
     </div>
   );
 }
