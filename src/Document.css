@@ -1,0 +1,14 @@
+div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.content{
+    width: 60%;
+    height: 80vh;
+    overflow-y: scroll;
+    font-size: 30px;
+    text-align: center;
+    /* over */
+}
